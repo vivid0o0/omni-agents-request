@@ -1,0 +1,44 @@
+# .gitignore -- OAR private and generated files
+# description: Keeps generated responses, local responders, caches, secrets, browser profiles, and build outputs out of source control.
+# Tags: gitignore, privacy, generated-files, secrets
+# date: 2026-07-04
+responses/*
+!responses/
+agents/*
+!agents/
+!agents/__init__.py
+!agents/COMBINER.py
+!agents/chatgpt_web.py
+!agents/glm_web.py
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.env.*
+feedback/
+config.local.*
+secrets/
+*.log
+*.jsonl
+*.sqlite
+*.db
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+implementation.md
+QA.md
+rules.md
+browser-profile*/
+playwright-profile*/
+*.har
+*.trace.zip
+screenshots/
+.DS_Store
+.vscode/
+.idea/

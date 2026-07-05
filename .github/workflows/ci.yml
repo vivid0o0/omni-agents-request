@@ -1,0 +1,26 @@
+# ci.yml -- OAR source CI
+# description: Compile core and managed responder source, shell-check, and regression-test OAR on supported Linux and macOS Python versions.
+# Tags: ci, tests, validation, release-safety
+# date: 2026-07-06
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15]
+        python-version: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile main.py agents/COMBINER.py agents/chatgpt_web.py agents/glm_web.py tests/test_oar.py
+      - run: bash -n install.sh
+      - run: python -m unittest discover -s tests -v

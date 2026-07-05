@@ -1,0 +1,28 @@
+# pyproject.toml -- OAR source metadata
+# description: Python project metadata and development tool configuration for the source package.
+# Tags: packaging, metadata, tests, tooling
+# date: 2026-07-04
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omni-agents-request"
+version = "1.1.2"
+description = "Local multi-agent LLM request fanout runtime with responder plugins and a combiner."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "vivid0o0" }]
+
+[project.scripts]
+oar = "main:main"
+omni-agents-request = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = ["agents"]
+
+[tool.unittest]
+start-directory = "tests"
